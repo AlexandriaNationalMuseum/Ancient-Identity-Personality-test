@@ -1,0 +1,455 @@
+/* ============================================ */
+/* style-landing.css - Updated Logo Section */
+/* ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 100vh;
+}
+
+Dark overlay for better text readability
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Responsive background scaling for all devices */
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 60px 20px 80px;
+    z-index: 1;
+}
+
+/* ===== Logo Container - At the very top ===== */
+.logo-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.site-logo {
+    max-width: 100px;
+    width: auto;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+    /* Remove white background - make image transparent */
+    background: transparent;
+    display: block;
+}
+
+.museum-text {
+    text-align: center;
+}
+
+.museum-text p {
+    color: #b89a5a;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive logo sizing */
+@media (max-width: 768px) {
+    .site-logo {
+        max-width: 75px;
+    }
+    
+    .museum-text p {
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .hero {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-logo {
+        max-width: 60px;
+    }
+    
+    .museum-text p {
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+    }
+    
+    .hero {
+        padding-top: 40px;
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    animation: fadeInUp 0.8s ease-out;
+    margin-bottom: 60px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-tagline {
+    font-size: 1rem;
+    letter-spacing: 8px;
+    color: #b89a5a;
+    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-family: 'Cinema Decorative', 'Cormorant Garamond', serif;
+    letter-spacing: 2px;
+    color: #e8d5a3;
+}
+
+.hero-title .highlight {
+    color: #e8d5a3;
+    text-shadow: 0 0 20px rgba(232, 213, 163, 0.4);
+    display: inline-block;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #d4c5a0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.start-journey-btn {
+    background: transparent;
+    border: 2px solid #e8d5a3;
+    color: #e8d5a3;
+    padding: 12px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.4s;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 100px;
+}
+
+.start-journey-btn:hover {
+    background: #e8d5a3;
+    color: #0a0a0a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(232, 213, 163, 0.2);
+}
+
+.start-journey-btn .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+}
+
+.start-journey-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* ===== Civilizations Wrapper ===== */
+.civ-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: 30px;
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.civ-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.civ-card {
+    background: rgba(20, 18, 15, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(232, 213, 163, 0.2);
+    border-radius: 20px;
+    padding: 2rem 2rem;
+    width: 250px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.civ-card:hover {
+    transform: translateY(-10px);
+    border-color: #e8d5a3;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.civ-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s;
+}
+
+.civ-card:hover .civ-icon {
+    transform: scale(1.1);
+    text-shadow: 0 0 15px #e8d5a3;
+}
+
+.civ-card h3 {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #e8d5a3;
+}
+
+.civ-glow {
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(232, 213, 163, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.civ-card:hover .civ-glow {
+    opacity: 1;
+}
+
+/* ===== Modal Styles ===== */
+.civ-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a1612, #0f0d0a);
+    border: 2px solid #e8d5a3;
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: modalFadeIn 0.4s;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #e8d5a3;
+    transition: all 0.3s;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.modal-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    color: #e8d5a3;
+}
+
+.modal-content p {
+    color: #c4b68a;
+    line-height: 1.6;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding: 50px 20px 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-content {
+        margin-bottom: 40px;
+    }
+    
+    .civ-card {
+        width: 200px;
+        padding: 1.5rem;
+    }
+    
+    .civ-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .start-journey-btn {
+        padding: 10px 30px;
+        font-size: 1rem;
+    }
+    
+    .civ-container {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 40px 20px 50px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-tagline {
+        font-size: 0.8rem;
+        letter-spacing: 5px;
+    }
+    
+    .civ-container {
+        gap: 1rem;
+    }
+    
+    .civ-card {
+        width: 140px;
+        padding: 1rem;
+    }
+    
+    .civ-icon {
+        font-size: 1.8rem;
+    }
+    
+    .civ-card h3 {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1920px) {
+    body {
+        background-size: cover;
+    }
+    
+    .hero-title {
+        font-size: 5.5rem;
+    }
+    
+    .site-logo {
+        max-width: 120px;
+    }
+}
