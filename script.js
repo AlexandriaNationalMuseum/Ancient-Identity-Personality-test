@@ -1,6 +1,6 @@
 // ============================================
 // script.js - Quiz logic and scoring system
-// Updated with gender filtering
+// No radio circles - using class-based selection
 // ============================================
 
 // Character data separated by gender
@@ -134,9 +134,8 @@ function getResult() {
     let winners = [];
 
     for (let key in scores) {
-        // Filter by selected gender
         if (characterData[key] && characterData[key].gender !== selectedGender) {
-            continue; // Skip characters that don't match the selected gender
+            continue;
         }
         
         if (scores[key] > max) {
@@ -147,7 +146,6 @@ function getResult() {
         }
     }
 
-    // In case of tie, randomly select one
     return winners[Math.floor(Math.random() * winners.length)];
 }
 
@@ -161,7 +159,7 @@ function isGenderSelected() {
     return false;
 }
 
-// Check if all questions are answered (including gender)
+// Check if all questions are answered
 function allQuestionsAnswered() {
     if (!isGenderSelected()) return false;
     
@@ -172,7 +170,7 @@ function allQuestionsAnswered() {
     return true;
 }
 
-// Update button state based on answered questions
+// Update button state and visual selection
 function updateButtonState() {
     const btn = document.getElementById('showResultBtn');
     const statusDiv = document.getElementById('scoreStatus');
@@ -186,6 +184,9 @@ function updateButtonState() {
         if (document.querySelector(`input[name="q${i}"]:checked`)) answeredCount++;
     }
     
+    // Update visual selection styling
+    updateVisualSelection();
+    
     if (allQuestionsAnswered()) {
         btn.disabled = false;
         if (statusDiv) statusDiv.innerHTML = "✅ All questions answered! Click to discover your personality ✅";
@@ -193,6 +194,22 @@ function updateButtonState() {
         btn.disabled = true;
         if (statusDiv) statusDiv.innerHTML = `📝 ${answeredCount}/7 questions answered... Complete all answers to see your result 📝`;
     }
+}
+
+// Update visual styling for selected options (no circles)
+function updateVisualSelection() {
+    // Remove selected class from all options
+    document.querySelectorAll('.radio-option').forEach(option => {
+        option.classList.remove('selected');
+    });
+    
+    // Add selected class to checked options
+    document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+        const parent = radio.closest('.radio-option');
+        if (parent) {
+            parent.classList.add('selected');
+        }
+    });
 }
 
 // Collect answers, compute scores, and return winner
@@ -231,17 +248,15 @@ function showResultPage() {
         return;
     }
 
-    // Save result to localStorage
     localStorage.setItem('quizResult', JSON.stringify({
         characterKey: winnerKey,
         characterData: characterData[winnerKey]
     }));
 
-    // Redirect to result page
     window.location.href = 'result.html';
 }
 
-// Bind radio change events
+// Bind click events to radio options
 function bindRadioEvents() {
     const allRadios = document.querySelectorAll('input[type="radio"]');
     allRadios.forEach(radio => {
@@ -249,9 +264,21 @@ function bindRadioEvents() {
             updateButtonState();
         });
     });
+    
+    // Make the entire label clickable
+    const options = document.querySelectorAll('.radio-option');
+    options.forEach(option => {
+        option.addEventListener('click', function(e) {
+            const radio = this.querySelector('input[type="radio"]');
+            if (radio && !radio.checked) {
+                radio.checked = true;
+                updateButtonState();
+            }
+        });
+    });
 }
 
-// Add card click effects and golden border effect
+// Add card click effects
 function addCardEffects() {
     const cards = document.querySelectorAll('.card');
     cards.forEach(card => {
@@ -273,13 +300,11 @@ function init() {
     updateButtonState();
     addCardEffects();
     
-    // Bind show result button
     const showBtn = document.getElementById('showResultBtn');
     if (showBtn) {
         showBtn.addEventListener('click', showResultPage);
     }
     
-    // Back button to landing page
     const backButton = document.getElementById('backToLandingBtn');
     if (backButton) {
         backButton.addEventListener('click', function() {
@@ -288,5 +313,4 @@ function init() {
     }
 }
 
-// Start when DOM is ready
 document.addEventListener('DOMContentLoaded', init);
