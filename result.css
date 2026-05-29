@@ -322,3 +322,50 @@ body::before {
         font-size: 1.05rem;
     }
 }
+/* Language Selector Styles for Result Page */
+.language-selector-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.result-page {
+    position: relative;
+}
+
+.language-select {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(232, 213, 163, 0.5);
+    color: #e8d5a3;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.language-select:hover {
+    background: rgba(232, 213, 163, 0.2);
+    border-color: #e8d5a3;
+}
+
+.language-select option {
+    background: #1a1a2e;
+    color: #e8d5a3;
+}
+
+@media (max-width: 550px) {
+    .language-selector-container {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .language-select {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}

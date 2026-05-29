@@ -10,6 +10,72 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* ============================================ */
+/* Language Selector Styles - Top Right */
+/* ============================================ */
+
+.language-selector-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.container {
+    position: relative;
+}
+
+.language-select {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 160, 23, 0.5);
+    color: #d4a017;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.language-select:hover {
+    background: rgba(212, 160, 23, 0.2);
+    border-color: #d4a017;
+}
+
+.language-select option {
+    background: #1a1a2e;
+    color: #e8d5a3;
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] .language-selector-container {
+    right: auto;
+    left: 20px;
+}
+
+[dir="rtl"] .back-button-container {
+    text-align: right;
+}
+
+/* Mobile responsive */
+@media (max-width: 550px) {
+    .language-selector-container {
+        top: 10px;
+        right: 10px;
+    }
+    
+    [dir="rtl"] .language-selector-container {
+        right: auto;
+        left: 10px;
+    }
+    
+    .language-select {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
 
 body {
     font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', sans-serif;

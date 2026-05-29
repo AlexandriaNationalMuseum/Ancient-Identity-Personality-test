@@ -1,7 +1,3 @@
-<!-- ============================================ -->
-<!-- index.html - Quiz Page with No Radio Circles -->
-<!-- Original card spacing restored -->
-<!-- ============================================ -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -9,169 +5,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Discover Your Ancient Identity</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
+        <!-- Language Selector - Top Right -->
+        <div class="language-selector-container">
+            <select id="languageSelect" class="language-select">
+                <option value="en">English</option>
+                <option value="ar">العربية</option>
+            </select>
+        </div>
+
         <!-- زر الرجوع إلى landing page -->
         <div class="back-button-container">
-            <button class="back-btn" id="backToLandingBtn">Back to Main Page</button>
+            <button class="back-btn" id="backToLandingBtn" data-translate="backToMain">Back to Main Page</button>
         </div>
 
         <header>
-            <h1>Discover Your Ancient Identity</h1>
-            <p>Choose the answer that fits your personality</p>
+            <h1 data-translate="discoverYour">Discover Your Ancient Identity</h1>
+            <p data-translate="chooseAnswer">Choose the answer that fits your personality</p>
         </header>
 
         <!-- Gender Selection Question -->
         <div class="card" data-q="gender">
-            <h1>Question 1</h1>
-            <h1>Select your gender:</h1>
+            <h1 data-translate="question1">Question 1</h1>
+            <h1 data-translate="selectGender">Select your gender:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="gender" value="female" style="display: none;">
-                    <span class="radio-text">Female ♀</span>
+                    <span class="radio-text" data-translate="female">Female ♀</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="gender" value="male" style="display: none;">
-                    <span class="radio-text">Male ♂</span>
+                    <span class="radio-text" data-translate="male">Male ♂</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 1 (original) -->
         <div class="card" data-q="1">
-            <h1>Question 2</h1>
-            <h1>People usually describe you as:</h1>
+            <h1 data-translate="question2">Question 2</h1>
+            <h1 data-translate="q1Text">People usually describe you as:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q1" value="A" style="display: none;">
-                    <span class="radio-text">Someone who thinks differently from others</span>
+                    <span class="radio-text" data-translate="q1A">Someone who thinks differently from others</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q1" value="B" style="display: none;">
-                    <span class="radio-text">Strong and confident</span>
+                    <span class="radio-text" data-translate="q1B">Strong and confident</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q1" value="C" style="display: none;">
-                    <span class="radio-text">Calm and easy to be around</span>
+                    <span class="radio-text" data-translate="q1C">Calm and easy to be around</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 2 -->
         <div class="card" data-q="2">
-            <h1>Question 3</h1>
-            <h1>When you face a problem, you usually:</h1>
+            <h1 data-translate="question3">Question 3</h1>
+            <h1 data-translate="q2Text">When you face a problem, you usually:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q2" value="A" style="display: none;">
-                    <span class="radio-text">Think it through and analyze calmly</span>
+                    <span class="radio-text" data-translate="q2A">Think it through and analyze calmly</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q2" value="B" style="display: none;">
-                    <span class="radio-text">Deal with it quickly and directly</span>
+                    <span class="radio-text" data-translate="q2B">Deal with it quickly and directly</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q2" value="C" style="display: none;">
-                    <span class="radio-text">Step back for a bit until you understand it better</span>
+                    <span class="radio-text" data-translate="q2C">Step back for a bit until you understand it better</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 3 -->
         <div class="card" data-q="3">
-            <h1>Question 4</h1>
-            <h1>What mainly drives your decisions in life is:</h1>
+            <h1 data-translate="question4">Question 4</h1>
+            <h1 data-translate="q3Text">What mainly drives your decisions in life is:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q3" value="A" style="display: none;">
-                    <span class="radio-text">Curiosity and wanting to understand things</span>
+                    <span class="radio-text" data-translate="q3A">Curiosity and wanting to understand things</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q3" value="B" style="display: none;">
-                    <span class="radio-text">Success and proving yourself</span>
+                    <span class="radio-text" data-translate="q3B">Success and proving yourself</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q3" value="C" style="display: none;">
-                    <span class="radio-text">Living freely without pressure</span>
+                    <span class="radio-text" data-translate="q3C">Living freely without pressure</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 4 -->
         <div class="card" data-q="4">
-            <h1>Question 5</h1>
-            <h1>If someone hurts or wrongs you:</h1>
+            <h1 data-translate="question5">Question 5</h1>
+            <h1 data-translate="q4Text">If someone hurts or wrongs you:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q4" value="A" style="display: none;">
-                    <span class="radio-text">Respond logically and calmly</span>
+                    <span class="radio-text" data-translate="q4A">Respond logically and calmly</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q4" value="B" style="display: none;">
-                    <span class="radio-text">React fast and firmly</span>
+                    <span class="radio-text" data-translate="q4B">React fast and firmly</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q4" value="C" style="display: none;">
-                    <span class="radio-text">Stay quiet and walk away</span>
+                    <span class="radio-text" data-translate="q4C">Stay quiet and walk away</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 5 -->
         <div class="card" data-q="5">
-            <h1>Question 6</h1>
-            <h1>People usually see you as:</h1>
+            <h1 data-translate="question6">Question 6</h1>
+            <h1 data-translate="q5Text">People usually see you as:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q5" value="A" style="display: none;">
-                    <span class="radio-text">Wise and insightful</span>
+                    <span class="radio-text" data-translate="q5A">Wise and insightful</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q5" value="B" style="display: none;">
-                    <span class="radio-text">A leader who influences others</span>
+                    <span class="radio-text" data-translate="q5B">A leader who influences others</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q5" value="C" style="display: none;">
-                    <span class="radio-text">A bit mysterious and hard to read</span>
+                    <span class="radio-text" data-translate="q5C">A bit mysterious and hard to read</span>
                 </label>
             </div>
         </div>
 
         <!-- السؤال 6 -->
         <div class="card" data-q="6">
-            <h1>Question 7</h1>
-            <h1>Your lifestyle is more like:</h1>
+            <h1 data-translate="question7">Question 7</h1>
+            <h1 data-translate="q6Text">Your lifestyle is more like:</h1>
             <div class="radio-group">
                 <label class="radio-option">
                     <input type="radio" name="q6" value="A" style="display: none;">
-                    <span class="radio-text">Thinking before acting</span>
+                    <span class="radio-text" data-translate="q6A">Thinking before acting</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q6" value="B" style="display: none;">
-                    <span class="radio-text">Going after goals with focus and determination</span>
+                    <span class="radio-text" data-translate="q6B">Going after goals with focus and determination</span>
                 </label>
                 <label class="radio-option">
                     <input type="radio" name="q6" value="C" style="display: none;">
-                    <span class="radio-text">Living your own way with no restrictions</span>
+                    <span class="radio-text" data-translate="q6C">Living your own way with no restrictions</span>
                 </label>
             </div>
         </div>
 
         <!-- زر عرض النتيجة -->
         <div class="result-button-container">
-            <button class="show-result-btn" id="showResultBtn">Discover Your Ancient Identity</button>
+            <button class="show-result-btn" id="showResultBtn" data-translate="discoverBtn">Discover Your Ancient Identity</button>
         </div>
         <div class="score-status" id="scoreStatus"></div>
 
         <footer>
-            <!-- <p>⚜️ اختاري إجاباتك لتحليل شخصيتك الفرعونية — كل اختيار يعكس جانباً من داخلك ⚜️</p> -->
+            <!-- Footer content -->
         </footer>
     </div>
 
+    <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>
 

@@ -4,11 +4,15 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Handle logo loading error - fallback if image missing
+    // Initialize language selector
+    if (typeof initLanguageSelector === 'function') {
+        initLanguageSelector();
+    }
+    
+    // Handle logo loading error
     const logoImg = document.getElementById('siteLogo');
     if (logoImg) {
         logoImg.addEventListener('error', function() {
-            // If logo.png doesn't exist, create a text fallback
             const logoWrapper = document.querySelector('.logo-wrapper');
             if (logoWrapper && !logoWrapper.querySelector('.logo-fallback')) {
                 const fallbackLogo = document.createElement('div');
@@ -43,23 +47,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Civilization Modal Data
     const civData = {
         egyptian: {
-            title: "EGYPTIAN CIVILIZATION",
-            desc: "Step into the world of Pharaohs, pyramids, and eternal wisdom. The ancient Egyptians believed in balance, Ma'at, and the journey of the soul. Their legacy teaches us about power, mystery, and the art of leaving a mark that lasts forever.",
-            icon: "𓋹𓂀𓋹𓃠"
+            titleEn: "EGYPTIAN CIVILIZATION",
+            titleAr: "الحضارة المصرية",
+            descEn: "Step into the world of Pharaohs, pyramids, and eternal wisdom. The ancient Egyptians believed in balance, Ma'at, and the journey of the soul. Their legacy teaches us about power, mystery, and the art of leaving a mark that lasts forever.",
+            descAr: "ادخل عالم الفراعنة والأهرامات والحكمة الخالدة. آمن المصريون القدماء بالتوازن وماعت ورحلة الروح. يعلمنا إرثهم عن القوة والغموض وفن ترك بصمة تدوم إلى الأبد.",
+            icon: "𓋹"
         },
         greco: {
-            title: "GRECO-ROMAN CIVILIZATION",
-            desc: "From the philosophy of Socrates to the might of Rome, Greco-Roman culture shaped Western thought. Heroes, gods, and the pursuit of excellence defined these civilizations. Discover your inner warrior, thinker, or ruler.",
-            icon: "⚔️🏛️"
+            titleEn: "GRECO-ROMAN CIVILIZATION",
+            titleAr: "الحضارة اليونانية الرومانية",
+            descEn: "From the philosophy of Socrates to the might of Rome, Greco-Roman culture shaped Western thought. Heroes, gods, and the pursuit of excellence defined these civilizations. Discover your inner warrior, thinker, or ruler.",
+            descAr: "من فلسفة سقراط إلى قوة روما، شكلت الثقافة اليونانية الرومانية الفكر الغربي. الأبطال والآلهة والسعي للتميز ميزت هذه الحضارات. اكتشف محاربك الداخلي أو مفكرك أو حاكمك.",
+            icon: "⚡"
         },
         islamic: {
-            title: "ISLAMIC GOLDEN AGE",
-            desc: "An era of knowledge, art, and scientific breakthrough. From Baghdad to Cordoba, scholars advanced mathematics, medicine, and philosophy. This civilization celebrates wisdom, justice, and the beauty of discovery.",
-            icon: "☪🕌☪"
+            titleEn: "ISLAMIC GOLDEN AGE",
+            titleAr: "العصر الذهبي الإسلامي",
+            descEn: "An era of knowledge, art, and scientific breakthrough. From Baghdad to Cordoba, scholars advanced mathematics, medicine, and philosophy. This civilization celebrates wisdom, justice, and the beauty of discovery.",
+            descAr: "عصر من المعرفة والفن والاختراق العلمي. من بغداد إلى قرطبة، قدم العلماء إسهامات في الرياضيات والطب والفلسفة. تحتفل هذه الحضارة بالحكمة والعدالة وجمال الاكتشاف.",
+            icon: "✧"
         }
     };
     
-    // Create Modal dynamically if it doesn't exist
+    // Create Modal dynamically
     let modal = document.getElementById('civModal');
     if (!modal) {
         modal = document.createElement('div');
@@ -83,9 +93,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function openModal(civType) {
         const data = civData[civType];
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        
         if (data) {
-            if (modalTitle) modalTitle.textContent = data.title;
-            if (modalDesc) modalDesc.textContent = data.desc;
+            if (modalTitle) {
+                modalTitle.textContent = currentLang === 'ar' ? data.titleAr : data.titleEn;
+            }
+            if (modalDesc) {
+                modalDesc.textContent = currentLang === 'ar' ? data.descAr : data.descEn;
+            }
             if (modalIcon) {
                 modalIcon.innerHTML = data.icon;
                 modalIcon.style.fontSize = '3rem';
@@ -157,15 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Add subtle parallax effect on hero
-    window.addEventListener('scroll', function() {
-        const scrollPos = window.scrollY;
-        const hero = document.querySelector('.hero');
-        if (hero && scrollPos < 600) {
-            hero.style.backgroundPosition = `center ${scrollPos * 0.2}px`;
-        }
-    });
-    
     // Logo animation on load
     const logo = document.querySelector('.site-logo');
     if (logo) {
@@ -178,5 +185,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
-    console.log('✨ Ancient Identity Landing Page Ready - Logo with museum text, transparent background ✨');
+    console.log('✨ Ancient Identity Landing Page Ready ✨');
 });
